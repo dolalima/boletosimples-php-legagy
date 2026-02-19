@@ -2,14 +2,16 @@
 
 namespace BoletoSimples;
 
-class Configuration {
-  private $environments_uri = array('sandbox' => 'https://sandbox.boletosimples.com.br/api/v1/', 'production' => 'https://boletosimples.com.br/api/v1/');
+class Configuration
+{
+  private $environments_uri = array('sandbox' => 'https://api-sandbox.kobana.com.br/v1/', 'production' => 'https://api.kobana.com.br/v1/');
   public $environment = null;
   public $application_id = null;
   public $application_secret = null;
   public $access_token = null;
 
-  public function __construct($params = array()) {
+  public function __construct($params = array())
+  {
     $default_environment = getenv('BOLETOSIMPLES_ENV') ? getenv('BOLETOSIMPLES_ENV') : 'sandbox';
     $default_application_id = getenv('BOLETOSIMPLES_APP_ID') ? getenv('BOLETOSIMPLES_APP_ID') : null;
     $default_application_secret = getenv('BOLETOSIMPLES_APP_SECRET') ? getenv('BOLETOSIMPLES_APP_SECRET') : null;
@@ -21,16 +23,18 @@ class Configuration {
     $this->access_token = isset($params['access_token']) ? $params['access_token'] : $default_access_token;
   }
 
-  public function userAgent() {
-    return "BoletoSimples PHP Client v".\BoletoSimples::VERSION." (contato@boletosimples.com.br)";
+  public function userAgent()
+  {
+    return "BoletoSimples PHP Client v" . \BoletoSimples::VERSION . " (contato@kobana.com.br)";
   }
 
-  public function hasAccessToken() {
+  public function hasAccessToken()
+  {
     return $this->access_token != null;
   }
 
-  public function baseUri() {
+  public function baseUri()
+  {
     return $this->environments_uri[$this->environment];
   }
-
 }
