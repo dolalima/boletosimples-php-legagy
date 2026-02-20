@@ -2,9 +2,9 @@
 -
     request:
         method: GET
-        url: 'https://sandbox.boletosimples.com.br/api/v1/userinfo'
+        url: 'https://api-sandbox.kobana.com.br/v1/userinfo'
         headers:
-            Host: sandbox.boletosimples.com.br
+            Host: api-sandbox.kobana.com.br
             Accept-Encoding: null
             Content-Type: application/json
             User-Agent: 'BoletoSimples PHP Client v0.0.8 (contato@boletosimples.com.br)'
@@ -39,4 +39,4 @@
             X-Powered-By: 'Phusion Passenger 5.1.0'
             Server: 'nginx/1.10.2 + Phusion Passenger 5.1.0'
             Via: '1.1 vegur'
-        body: '{"id":53,"login_url":"https://sandbox.boletosimples.com.br/welcome?email=user1%40example.com\u0026token=Dx6tDtrP_v9_CcDjMRmr","email":"user1@example.com","account_type":null,"first_name":null,"middle_name":null,"last_name":null,"full_name":null,"cpf":null,"date_of_birth":null,"mother_name":null,"father_name":null,"account_level":1,"phone_number":null,"address_street_name":null,"address_number":null,"address_complement":null,"address_neighborhood":null,"address_postal_code":null,"address_city_name":null,"address_state":null,"business_name":null,"business_cnpj":null,"business_legal_name":null,"balance_cents":1203}'
+        body: '{"id":53,"login_url":"https://api-sandbox.kobana.com.br/welcome?email=user1%40example.com\u0026token=Dx6tDtrP_v9_CcDjMRmr","email":"user1@example.com","account_type":null,"first_name":null,"middle_name":null,"last_name":null,"full_name":null,"cpf":null,"date_of_birth":null,"mother_name":null,"father_name":null,"account_level":1,"phone_number":null,"address_street_name":null,"address_number":null,"address_complement":null,"address_neighborhood":null,"address_postal_code":null,"address_city_name":null,"address_state":null,"business_name":null,"business_cnpj":null,"business_legal_name":null,"balance_cents":1203}'

@@ -1,6 +1,8 @@
 <?php
 
-class CustomerTest extends PHPUnit_Framework_TestCase {
+use PHPUnit\Framework\TestCase;
+
+class CustomerTest extends TestCase {
   private static $customer_id;
   /**
    * @before
@@ -146,8 +148,8 @@ class CustomerTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals(BoletoSimples::$last_request->total, 10);
     $this->assertEquals(BoletoSimples::$last_request->ratelimit_limit, 500);
     $this->assertEquals(BoletoSimples::$last_request->ratelimit_remaining, 485);
-    $this->assertEquals(BoletoSimples::$last_request->links['last'], 'https://sandbox.boletosimples.com.br/api/v1/customers?page=5&per_page=2');
-    $this->assertEquals(BoletoSimples::$last_request->links['next'], 'https://sandbox.boletosimples.com.br/api/v1/customers?page=2&per_page=2');
+    $this->assertEquals(BoletoSimples::$last_request->links['last'], 'https://api-sandbox.kobana.com.br/v1/customers?page=5&per_page=2');
+    $this->assertEquals(BoletoSimples::$last_request->links['next'], 'https://api-sandbox.kobana.com.br/v1/customers?page=2&per_page=2');
   }
 
   /**

@@ -24,31 +24,25 @@ class LastRequest {
   public $links = null;
 
   /**
-   * GuzzleHttp\Message\Request object
-   */
-  public $request = null;
-
-  /**
-   * GuzzleHttp\Message\Response object
+   * GuzzleHttp\Psr7\Response object
    */
   public $response = null;
 
   /**
    * Constructor method.
    */
-  public function __construct($request, $response) {
-    $this->request = $request;
+  public function __construct($response) {
     $this->response = $response;
 
-    $this->total = $response->getHeader('Total');
-    $this->ratelimit_limit = $response->getHeader('X-Ratelimit-Limit');
-    $this->ratelimit_remaining = $response->getHeader('X-Ratelimit-Remaining');
+    $this->total = $response->getHeaderLine('Total') ?: null;
+    $this->ratelimit_limit = $response->getHeaderLine('X-Ratelimit-Limit') ?: null;
+    $this->ratelimit_remaining = $response->getHeaderLine('X-Ratelimit-Remaining') ?: null;
     $this->links = $this->getLinks($response);
   }
 
   private function getLinks($response) {
-    $link_header = $response->getHeader('Link');
-    if ($link_header == null) {
+    $link_header = $response->getHeaderLine('Link');
+    if (empty($link_header)) {
       return [];
     }
     $links = [];

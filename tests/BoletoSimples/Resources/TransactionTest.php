@@ -1,6 +1,8 @@
 <?php
 
-class TransactionTest extends PHPUnit_Framework_TestCase {
+use PHPUnit\Framework\TestCase;
+
+class TransactionTest extends TestCase {
   /**
    * @before
    */

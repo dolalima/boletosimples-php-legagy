@@ -1,7 +1,13 @@
 <?php
 
-class VcrSecurityListener implements \PHPUnit_Framework_TestListener
+use PHPUnit\Framework\TestListener;
+use PHPUnit\Framework\TestListenerDefaultImplementation;
+use PHPUnit\Framework\TestSuite;
+
+class VcrSecurityListener implements TestListener
 {
+    use TestListenerDefaultImplementation;
+
     private $dataChanged = null;
 
     private function sensitiveData() {
@@ -13,7 +19,7 @@ class VcrSecurityListener implements \PHPUnit_Framework_TestListener
       ];
     }
 
-    public function startTestSuite(\PHPUnit_Framework_TestSuite $suite) {
+    public function startTestSuite(TestSuite $suite): void {
       foreach($this->sensitiveData() as $k => $v) {
         if($v != null) {
           shell_exec("perl -e \"s/" . $k . "/" . $v . "/g;\" -pi $(find " . dirname (__FILE__) . "/../fixtures -type f)");
@@ -22,19 +28,11 @@ class VcrSecurityListener implements \PHPUnit_Framework_TestListener
       $this->dataChanged = $this->sensitiveData();
     }
 
-    public function endTestSuite(\PHPUnit_Framework_TestSuite $suite) {
+    public function endTestSuite(TestSuite $suite): void {
       foreach($this->dataChanged as $k => $v) {
         if($v != null) {
           shell_exec("perl -e \"s/" . $v . "/" . $k . "/g;\" -pi $(find " . dirname (__FILE__) . "/../fixtures -type f)");
         }
       }
     }
-
-    public function addRiskyTest(\PHPUnit_Framework_Test $test, \Exception $e, $time) {}
-    public function addError(\PHPUnit_Framework_Test $test, \Exception $e, $time) {}
-    public function addFailure(\PHPUnit_Framework_Test $test, \PHPUnit_Framework_AssertionFailedError $e, $time) {}
-    public function startTest(\PHPUnit_Framework_Test $test) { }
-    public function endTest(\PHPUnit_Framework_Test $test, $time) { }
-    public function addIncompleteTest(\PHPUnit_Framework_Test $test, \Exception $e, $time) { }
-    public function addSkippedTest(\PHPUnit_Framework_Test $test, \Exception $e, $time) { }
 }

@@ -2,9 +2,9 @@
 -
     request:
         method: POST
-        url: 'https://sandbox.boletosimples.com.br/api/v1/bank_billets'
+        url: 'https://api-sandbox.kobana.com.br/v1/bank_billets'
         headers:
-            Host: sandbox.boletosimples.com.br
+            Host: api-sandbox.kobana.com.br
             Expect: null
             Accept-Encoding: null
             Content-Type: application/json
@@ -21,7 +21,7 @@
             Server: Cowboy
             Connection: keep-alive
             Strict-Transport-Security: max-age=2592000
-            Location: 'https://sandbox.boletosimples.com.br/api/v1/bank_billets/798'
+            Location: 'https://api-sandbox.kobana.com.br/v1/bank_billets/798'
             Content-Type: 'application/json; charset=utf-8'
             X-Ratelimit-Limit: '500'
             X-Ratelimit-Remaining: '479'

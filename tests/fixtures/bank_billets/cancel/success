@@ -2,9 +2,9 @@
 -
     request:
         method: GET
-        url: 'https://sandbox.boletosimples.com.br/api/v1/bank_billets/798'
+        url: 'https://api-sandbox.kobana.com.br/v1/bank_billets/798'
         headers:
-            Host: sandbox.boletosimples.com.br
+            Host: api-sandbox.kobana.com.br
             Accept-Encoding: null
             Content-Type: application/json
             User-Agent: 'BoletoSimples PHP Client v0.0.5 (contato@boletosimples.com.br)'
@@ -35,9 +35,9 @@
 -
     request:
         method: PUT
-        url: 'https://sandbox.boletosimples.com.br/api/v1/bank_billets/798/cancel'
+        url: 'https://api-sandbox.kobana.com.br/v1/bank_billets/798/cancel'
         headers:
-            Host: sandbox.boletosimples.com.br
+            Host: api-sandbox.kobana.com.br
             Content-Length: '0'
             Accept-Encoding: null
             Content-Type: application/json

@@ -1,26 +1,20 @@
 <?php
 
-class ResponseErrorTest extends PHPUnit_Framework_TestCase {
-  use \Xpmock\TestCaseTrait;
+use PHPUnit\Framework\TestCase;
+use GuzzleHttp\Psr7\Response;
 
-  /**
-   * @expectedException     \BoletoSimples\ResponseError
-   * @expectedExceptionMessage Você precisa se logar ou registrar antes de prosseguir.
-   */
+class ResponseErrorTest extends TestCase {
+
   public function testWithError () {
-    $response = $this->mock('\GuzzleHttp\Message\Response')
-      ->disableOriginalConstructor()
-      ->new();
+    $this->expectException(\BoletoSimples\ResponseError::class);
+    $this->expectExceptionMessage('Você precisa se logar ou registrar antes de prosseguir.');
 
-    $response->this()->setBody(GuzzleHttp\Stream\Stream::factory('{"error":"Você precisa se logar ou registrar antes de prosseguir."}'));
+    $response = new Response(401, [], '{"error":"Você precisa se logar ou registrar antes de prosseguir."}');
     $this->subject = new BoletoSimples\ResponseError($response);
   }
 
   public function testWithoutError () {
-    $response = $this->mock('\GuzzleHttp\Message\Response')
-      ->disableOriginalConstructor()
-      ->new();
-
+    $response = new Response(200, [], '{}');
     $this->subject = new BoletoSimples\ResponseError($response);
     $this->assertEquals($this->subject->response, $response);
   }

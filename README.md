@@ -18,7 +18,7 @@ Biblioteca PHP para acessar informações do [Boleto Simples](http://boletosimpl
 
 ### Requisitos
 
-PHP 5.4 ou superior
+PHP 7.1 ou superior
 
 ### Usando [Composer](https://getcomposer.org/)
 

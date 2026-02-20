@@ -24,7 +24,8 @@ class BankBillet extends BaseResource {
     }
     $response = self::sendRequest('GET', 'bank_billets/cnpj_cpf', ['query' => ['q' => $cnpj_cpf]]);
     $collection = [];
-    foreach ($response->json() as $attributes) {
+    $json = json_decode((string) $response->getBody(), true);
+    foreach ($json as $attributes) {
       $collection[] = new BankBillet($attributes);
     }
     return $collection;
@@ -36,7 +37,8 @@ class BankBillet extends BaseResource {
     }
     $response = self::sendRequest('GET', 'bank_billets/status', ['query' => ['q' => $status]]);
     $collection = [];
-    foreach ($response->json() as $attributes) {
+    $json = json_decode((string) $response->getBody(), true);
+    foreach ($json as $attributes) {
       $collection[] = new BankBillet($attributes);
     }
     return $collection;
@@ -48,14 +50,15 @@ class BankBillet extends BaseResource {
     }
     $response = self::sendRequest('GET', 'bank_billets/our_number', ['query' => ['q' => $our_number]]);
     $collection = [];
-    foreach ($response->json() as $attributes) {
+    $json = json_decode((string) $response->getBody(), true);
+    foreach ($json as $attributes) {
       $collection[] = new BankBillet($attributes);
     }
     return $collection;
   }
 
   public static function bulk($params) {
-    $response = self::sendRequest('POST', 'bank_billets/bulk', ['body' => json_encode(['bank_billets' => $params])]);
-    return $response->json();
+    $response = self::sendRequest('POST', 'bank_billets/bulk', ['json' => ['bank_billets' => $params]]);
+    return json_decode((string) $response->getBody(), true);
   }
 }

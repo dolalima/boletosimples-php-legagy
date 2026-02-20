@@ -1,6 +1,8 @@
 <?php
 
-class UtilTest extends PHPUnit_Framework_TestCase {
+use PHPUnit\Framework\TestCase;
+
+class UtilTest extends TestCase {
 	public function testPluralize () {
     $this->assertEquals (BoletoSimples\Util::pluralize('bank_billet'), 'bank_billets');
     $this->assertEquals (BoletoSimples\Util::pluralize('BankBillet'), 'BankBillets');

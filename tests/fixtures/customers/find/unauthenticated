@@ -2,9 +2,9 @@
 -
     request:
         method: GET
-        url: 'https://sandbox.boletosimples.com.br/api/v1/customers/1'
+        url: 'https://api-sandbox.kobana.com.br/v1/customers/1'
         headers:
-            Host: sandbox.boletosimples.com.br
+            Host: api-sandbox.kobana.com.br
             Accept-Encoding: null
             Content-Type: application/json
             User-Agent: 'BoletoSimples PHP Client v0.0.8 (contato@boletosimples.com.br)'
